@@ -1,17 +1,17 @@
-const BASE_URL = 'https://fakestoreapi.com/products'
+const BASE_URL = 'https://dummyjson.com/carts/1'
 
-export default async function getProducts (): Promise<Product[] | null>  {
+export default async function getCart (): Promise<Product[] | null>  {
   try {
     const response = await fetch(BASE_URL);
     if (response.ok) {
       
-      const data = await response.json() as Product[];
-      console.log(data)
-      return data
+      const data = await response.json() as CartResponse;
+      return data.products;
     }
     return null;
   } catch {
     return null;
   }
 };
+
 

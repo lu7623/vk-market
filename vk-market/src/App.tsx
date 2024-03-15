@@ -1,8 +1,8 @@
-import "./App.css";
-import { View, Panel, PanelHeader, Root } from "@vkontakte/vkui";
+import { View, Panel, Root, CardGrid, SplitLayout, AppRoot, SplitCol, Header } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import getProducts from "./api/getProducts";
 import { useEffect, useState } from "react";
+import ProductCard from "./components/ProductCard";
 
 export default function App() {
   const [products, setProducts]=useState<Product[]>([])
@@ -14,15 +14,24 @@ export default function App() {
     getData();
 } )
   return (
-    <Root activeView="view">
-      <View id="view" activePanel='main'>
-        <Panel id="main">
-          <PanelHeader>Basket app</PanelHeader>
-          {
-            products.map((p) => { return <p>{p.title}</p> })
-          }
-        </Panel>
-      </View>
-    </Root>
+    <AppRoot>
+      <Root activeView="view">
+        <View  id='view' activePanel="main">
+          <Panel id='main'>
+          <SplitLayout>
+            <SplitCol  width={800}>
+                <Header>products</Header>
+                <CardGrid size="l" spaced>
+                  {products.map(p => <ProductCard product={p} />)}
+                  </CardGrid>
+            </SplitCol>
+            <SplitCol width={500}>
+              <Header>busket</Header>
+            </SplitCol>
+            </SplitLayout>
+            </Panel>
+          </View>
+        </Root>
+        </AppRoot>
   );
 }
