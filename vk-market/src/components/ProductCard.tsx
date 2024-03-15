@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CellButton, Group, Header, IconButton, Image, InfoRow, Text } from "@vkontakte/vkui";
+import { ButtonGroup, Card, Group, Header, IconButton, Image } from "@vkontakte/vkui";
 import { Icon24AddOutline, Icon24DeleteOutline,Icon24MinusOutline  } from '@vkontakte/icons';
 
 export default function ProductCard({ product }: { product: Product }) {

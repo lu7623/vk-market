@@ -4,6 +4,7 @@ import getProducts from "./api/getProducts";
 import { useEffect, useState } from "react";
 import CardList from "./components/CardList";
 import Busket from "./components/Busket";
+import { AppProvider } from "./providers/redux-provider";
 
 export default function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,6 +16,7 @@ export default function App() {
     getData();
   });
   return (
+    <AppProvider>
     <Root activeView="view">
       <View id="view" activePanel="main">
         <Panel id="main">
@@ -28,6 +30,7 @@ export default function App() {
           </SplitLayout>
         </Panel>
       </View>
-    </Root>
+      </Root>
+      </AppProvider>
   );
 }
