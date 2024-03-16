@@ -39,18 +39,18 @@ export default function App() {
   };
   return (
     <Root activeView="view">
-      <View id="view" activePanel="main">
-        <Panel id="main">
-          <SplitLayout>
-            <SplitCol width={900}>
+      <View id="view" activePanel="main" >
+        <Panel id="main" >
+          <SplitLayout >
+            <SplitCol width='75%'>
               <Header>Products</Header>
               <CardGrid size="l" spaced>
                 {products.map((p) => (
-                  <ProductCard product={p} callback={handleDelete} />
+                  <ProductCard product={p} callback={handleDelete} key={p.id } />
                 ))}
               </CardGrid>
             </SplitCol>
-            <SplitCol width={300}>
+            <SplitCol width='25%'>
               <Busket />
             </SplitCol>
           </SplitLayout>
