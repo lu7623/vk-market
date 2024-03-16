@@ -2,7 +2,7 @@ type Product = {
   id: number;
   title: string;
   price: number;
-  quantity: string;
+  quantity: number;
   thumbnail: string;
   description?: string
 }
