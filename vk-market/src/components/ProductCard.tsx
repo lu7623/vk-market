@@ -5,6 +5,7 @@ import {
   Header,
   IconButton,
   Image,
+  Text,
 } from "@vkontakte/vkui";
 import {
   Icon24AddOutline,
@@ -48,11 +49,14 @@ export default function ProductCard({
           justifyContent: "space-between",
         }}
       >
-        <Image src={product.thumbnail} width={200} height={200} />
+        <Group mode="plain">
+          <Image src={product.thumbnail} width={200} height={200} />
+          </Group>
         <Group mode="plain">
           <Header multiline mode="secondary">
             {product.title}
           </Header>
+          <Text>{product.description}</Text>
         </Group>
         <Group mode="plain">
           <Header>{`Price: ${product.price}`}</Header>
