@@ -51,8 +51,8 @@ export default function ProductCard({
       >
         <Group mode="plain">
           <Image src={product.thumbnail} width={200} height={200} />
-          </Group>
-        <Group mode="plain">
+        </Group>
+        <Group mode="plain" style={{ width: "100%" }}>
           <Header multiline mode="secondary">
             {product.title}
           </Header>
@@ -60,15 +60,15 @@ export default function ProductCard({
         </Group>
         <Group mode="plain">
           <Header>{`Price: ${product.price}`}</Header>
-          <ButtonGroup>
-            <IconButton onClick={handlePlus}>
+          <ButtonGroup gap="s">
+            <IconButton label="plus" onClick={handlePlus}>
               <Icon24AddOutline />
             </IconButton>
             <Header>{currProd?.qty}</Header>
-            <IconButton onClick={handleMinus}>
+            <IconButton label="minus" onClick={handleMinus}>
               <Icon24MinusOutline />
             </IconButton>
-            <IconButton onClick={handleDelete}>
+            <IconButton label="delete" onClick={handleDelete}>
               <Icon24DeleteOutline />
             </IconButton>
           </ButtonGroup>
