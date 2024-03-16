@@ -22,9 +22,9 @@ export default function App() {
     const getData = async () => {
       const data = await getProducts();
       setProducts(data ? data : []);
-      dispatch(
+    data && dispatch(
         addProducts(
-          products.map((p) => {
+          data.map((p) => {
             return { productName: p.title, qty: p.quantity, price: p.price };
           })
         )
@@ -43,7 +43,7 @@ export default function App() {
         <Panel id="main">
           <SplitLayout>
             <SplitCol width={900}>
-              <Header>products</Header>
+              <Header>Products</Header>
               <CardGrid size="l" spaced>
                 {products.map((p) => (
                   <ProductCard product={p} callback={handleDelete} />

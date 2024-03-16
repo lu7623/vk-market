@@ -12,22 +12,32 @@ import {
   Icon24MinusOutline,
 } from "@vkontakte/icons";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { plusProductQty, minusProductQty, deleteProduct } from "../store/reducers/cartSlice";
+import {
+  plusProductQty,
+  minusProductQty,
+  deleteProduct,
+} from "../store/reducers/cartSlice";
 
-export default function ProductCard({ product, callback }: { product: Product, callback: (name:string) => void }) {
-  const { cart } = useAppSelector((state) => state.cart)
-  const currProd = cart.find(p => p.productName===product.title)
+export default function ProductCard({
+  product,
+  callback,
+}: {
+  product: Product;
+  callback: (name: string) => void;
+}) {
+  const { cart } = useAppSelector((state) => state.cart);
+  const currProd = cart.find((p) => p.productName === product.title);
   const dispatch = useAppDispatch();
   const handlePlus = () => {
-   dispatch(plusProductQty(product.title))
-  }
+    dispatch(plusProductQty(product.title));
+  };
   const handleMinus = () => {
-    dispatch(minusProductQty(product.title))
-  }
+    dispatch(minusProductQty(product.title));
+  };
   const handleDelete = () => {
-    dispatch(deleteProduct(product.title))
-    callback(product.title)
-   }
+    dispatch(deleteProduct(product.title));
+    callback(product.title);
+  };
   return (
     <>
       <Card
@@ -46,7 +56,6 @@ export default function ProductCard({ product, callback }: { product: Product, c
         </Group>
         <Group mode="plain">
           <Header>{`Price: ${product.price}`}</Header>
-
           <ButtonGroup>
             <IconButton onClick={handlePlus}>
               <Icon24AddOutline />
