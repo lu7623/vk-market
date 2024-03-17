@@ -24,7 +24,7 @@ const cartSlice = createSlice({
       const currProduct = state.cart.findIndex(
         (item) => item.productName == action.payload
       );
-      if (currProduct !== -1) {
+      if (currProduct !== -1  && state.cart[currProduct].qty < 10) {
         state.cart[currProduct].qty += 1;
         state.totalSum += state.cart[currProduct].price;
       }
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
       const currProduct = state.cart.findIndex(
         (item) => item.productName == action.payload
       );
-      if (currProduct !== -1 && state.cart[currProduct].qty > 0) {
+      if (currProduct !== -1 && state.cart[currProduct].qty > 1) {
         state.cart[currProduct].qty -= 1;
         state.totalSum -= state.cart[currProduct].price;
       }
